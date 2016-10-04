@@ -95,7 +95,8 @@ def game_loop():
                     x_change = 0
 
             if event.type == pygame.MOUSEMOTION:
-                x, y = event.pos
+                mouse_x, mouse_y = event.pos
+                mouse_y = 0
 
 
 
