@@ -84,6 +84,9 @@ def game_loop():
                 pygame.quit()
                 quit()
 
+            if event.type == pygame.MOUSEMOTION:
+                x = event.pos[0]
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     x_change = -5
@@ -93,11 +96,6 @@ def game_loop():
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                     x_change = 0
-
-            if event.type == pygame.MOUSEMOTION:
-                mouse_x, mouse_y = event.pos
-                mouse_y = 0
-
 
 
         x += x_change
@@ -110,13 +108,23 @@ def game_loop():
 
         car(x, y)
 
-# defines
-        if x > display_width - car_width  or x < 0:
+# defines crash
+
+        if x > display_width - car_width  or x <= 0:
             crash()
 
+# Defines box display
         if thing_starty > display_height:
             thing_starty = 0 - thing_height
             thing_startx = random.randrange(0, display_width)
+
+# Defines collision
+        '''
+        if y < thing_starty + thing_height:
+            print('y crossover')
+            if x > thing_startx and x < thing_startx + thing_width or x + car_width > thing_startx and x + car_width <
+
+'''
 
         pygame.display.update()
         clock.tick(60)
