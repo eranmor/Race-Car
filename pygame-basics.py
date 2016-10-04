@@ -22,7 +22,10 @@ pygame.display.set_caption('Race123')
 # Setting the game speed
 clock = pygame.time.Clock()
 
+# Loads tge car image
 carImg = pygame.image.load('car.png')
+
+
 
 # defines obstacles in the game
 def things(thingx, thingy,thingw, thingh, color):
@@ -37,6 +40,7 @@ def text_objects(text, font):
     textSurface = font.render(text, True, black)
     return textSurface, textSurface.get_rect()
 
+# Defines text on screen amd starts game after 3 sec
 def message_display(text):
     largeText = pygame.font.Font('freesansbold.ttf', 115)
     TextSurf, TextRect = text_objects(text, largeText)
@@ -48,10 +52,11 @@ def message_display(text):
 
     game_loop()
 
+# Defines what happens on crash event
 def crash():
     message_display('You Crashed')
 
-
+# Defines the beginning of the game
 def game_loop():
 
     x = (display_width * 0.45)
@@ -59,7 +64,9 @@ def game_loop():
 
     x_change = 0
 
-# defines obstacle's location, size and speed
+
+
+# defines obstacles' location, size and speed
     thing_startx = random.randrange(0, display_width)
     thing_starty = -600
     thing_speed = 7
@@ -67,6 +74,8 @@ def game_loop():
     thing_height = 100
 
     gameExit = False
+
+# Game logic
 
     while not gameExit:
 
@@ -85,6 +94,9 @@ def game_loop():
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                     x_change = 0
 
+            if event.type == pygame.MOUSEMOTION:
+                x, y = event.pos
+
 
 
         x += x_change
@@ -95,9 +107,9 @@ def game_loop():
         things(thing_startx, thing_starty, thing_width,thing_height, black)
         thing_starty += thing_speed
 
-        car(x,y)
+        car(x, y)
 
-# defines 
+# defines
         if x > display_width - car_width  or x < 0:
             crash()
 
