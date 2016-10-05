@@ -124,8 +124,8 @@ def game_loop():
             thing_starty = 0 - thing_height
             thing_startx = random.randrange(0, display_width)
             dodged += 1
-            # thing_speed += 1
-            # thing_width += (dodged * 1.2)
+            thing_speed += 1
+            thing_width += (dodged * 1.2)
 
 # Defines collision
 
