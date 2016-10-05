@@ -11,6 +11,8 @@ black = (0,0,0)
 white = (255,255,255)
 red = (255,0,0)
 
+block_color = (53,115,255)
+
 car_width = 63
 
 # Setting the game's resolution
@@ -31,9 +33,10 @@ def things_dodged(count):
     text = font.render("Dodged: " +str(count), True, black)
     # Display score
     gameDisplay.blit(text, (0,0))
+
 # defines obstacles in the game
 def things(thingx, thingy,thingw, thingh, color):
-    pygame.draw.rect(gameDisplay, color, [thingx, thingy,thingw, thingh])
+    pygame.draw.rect(gameDisplay, block_color, [thingx, thingy,thingw, thingh])
 
 # defines car's position on the surface
 def car(x,y):
@@ -63,17 +66,17 @@ def crash():
 # Defines the beginning of the game
 def game_loop():
 
+    pygame.mouse.set_visible(False)
+
     x = (display_width * 0.45)
     y = (display_height * 0.75)
 
     x_change = 0
 
-
-
 # defines obstacles' location, size and speed
     thing_startx = random.randrange(0, display_width)
     thing_starty = -600
-    thing_speed = 7
+    thing_speed = 4
     thing_width = 100
     thing_height = 100
     dodged = 0
@@ -107,7 +110,7 @@ def game_loop():
         gameDisplay.fill(white)
 
 # things(thingx, thingy,thingw, thingh, color):
-        things(thing_startx, thing_starty, thing_width,thing_height, black)
+        things(thing_startx, thing_starty, thing_width,thing_height, block_color)
         thing_starty += thing_speed
         car(x, y)
         things_dodged(dodged)
@@ -121,6 +124,8 @@ def game_loop():
             thing_starty = 0 - thing_height
             thing_startx = random.randrange(0, display_width)
             dodged += 1
+            # thing_speed += 1
+            # thing_width += (dodged * 1.2)
 
 # Defines collision
 
