@@ -19,7 +19,7 @@ car_width = 63
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 
 # Setting the window's name
-pygame.display.set_caption('Race123')
+pygame.display.set_caption('Avoid The Blocks')
 
 # Setting the game speed
 clock = pygame.time.Clock()
@@ -79,6 +79,7 @@ def game_loop():
     thing_speed = 4
     thing_width = 100
     thing_height = 100
+ #   thingCount = 1
     dodged = 0
     gameExit = False
 
@@ -91,8 +92,9 @@ def game_loop():
                 pygame.quit()
                 quit()
 
-            if event.type == pygame.MOUSEMOTION:
-                x = event.pos[0]
+# Mouse is inactive for now until issue is resolved
+#            if event.type == pygame.MOUSEMOTION:
+#                x = event.pos[0]
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
