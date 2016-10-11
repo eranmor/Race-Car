@@ -64,16 +64,25 @@ def message_display(text):
 def crash():
     message_display('You Crashed')
 
-# Game menu
-'''
-class GameMenu():
-    def __init__(self, screen, bg_color=(0,0,0)):
+# defines game menu
 
-        self.screen = screen
-        self.bg_color = bg_color
-        self.clock = pygame.time.Clock()
+def game_intro():
+    intro = True
 
-'''
+    while intro:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+        gameDisplay.fill(white)
+        largeText = pygame.font.Font('freesansbold.ttf', 80)
+        TextSurf, TextRect = text_objects("Avoid The Blocks", largeText)
+        TextRect.center = ((display_width/2), (display_height/2))
+        gameDisplay.blit(TextSurf, TextRect)
+        pygame.display.update()
+        clock.tick(15)
+
 
 # Defines the beginning of the game
 def game_loop():
@@ -153,6 +162,7 @@ def game_loop():
         pygame.display.update()
         clock.tick(60)
 
+game_intro()
 game_loop()
 pygame.quit
 quit()
