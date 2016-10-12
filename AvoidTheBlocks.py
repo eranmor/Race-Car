@@ -66,17 +66,17 @@ def message_display(text):
 def crash():
     message_display('You Crashed')
 
-def button(msg, x, y, w, h, i, a):
+def button(msg, x, y, w, h, ic, ac):
     mouse = pygame.mouse.get_pos()
 
-    if x + 100 > mouse[0] > 150 and x + 50 > mouse[1] > 450:
-        pygame.draw.rect(gameDisplay, bright_green, (x, 450, 100, 50))
+    if x + w > mouse[0] > 150 and x + h > mouse[1] > y:
+        pygame.draw.rect(gameDisplay, ac, (x, y, w, h))
     else:
-        pygame.draw.rect(gameDisplay, green, (150, 450, 100, 50))
+        pygame.draw.rect(gameDisplay, ic, (x, y, w, h))
 
     smalltext = pygame.font.Font('freesansbold.ttf', 20)
     textSurf, textRect = text_objects(msg, smalltext)
-    textRect.center = ((x + (100 / 2)), (450 + (50 / 2)))
+    textRect.center = ((x + (w / 2)), (y + (h / 2)))
     gameDisplay.blit(textSurf, textRect)
 
 # defines game menu
@@ -151,6 +151,7 @@ def game_loop():
 
 # Mouse is inactive for now until issue is resolved
             pygame.mouse.set_visible(False)
+
 #           if event.type == pygame.MOUSEMOTION:
 #                x = event.pos[0]
 
@@ -174,6 +175,7 @@ def game_loop():
         thing_starty += thing_speed
         car(x, y)
         things_dodged(dodged)
+
 # defines crash
 
         if x > display_width - car_width  or x <= 0:
