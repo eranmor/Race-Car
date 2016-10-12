@@ -66,6 +66,19 @@ def message_display(text):
 def crash():
     message_display('You Crashed')
 
+def button(msg, x, y, w, h, i, a):
+    mouse = pygame.mouse.get_pos()
+
+    if x + 100 > mouse[0] > 150 and x + 50 > mouse[1] > 450:
+        pygame.draw.rect(gameDisplay, bright_green, (x, 450, 100, 50))
+    else:
+        pygame.draw.rect(gameDisplay, green, (150, 450, 100, 50))
+
+    smalltext = pygame.font.Font('freesansbold.ttf', 20)
+    textSurf, textRect = text_objects(msg, smalltext)
+    textRect.center = ((x + (100 / 2)), (450 + (50 / 2)))
+    gameDisplay.blit(textSurf, textRect)
+
 # defines game menu
 
 def game_intro():
@@ -86,15 +99,22 @@ def game_intro():
 
         mouse = pygame.mouse.get_pos()
 
+
         if 150 + 100 > mouse[0] > 150 and 450+50 > mouse[1] > 450:
             pygame.draw.rect(gameDisplay, bright_green, (150, 450, 100, 50))
         else:
             pygame.draw.rect(gameDisplay, green, (150, 450, 100, 50 ))
 
+        smalltext = pygame.font.Font('freesansbold.ttf', 20)
+        textSurf, textRect = text_objects('GO!', smalltext)
+        textRect.center = ( (150 + (100/2)),(450 + (50/2)) )
+        gameDisplay.blit(textSurf, textRect)
+
         if 500 + 100 > mouse[0] > 550 and 450 +50 > mouse[1] > 450:
             pygame.draw.rect(gameDisplay, bright_red, (550, 450, 100, 50))
         else:
             pygame.draw.rect(gameDisplay, red, (550, 450, 100, 50))
+
 
 
         pygame.display.update()
