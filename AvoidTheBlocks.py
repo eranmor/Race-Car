@@ -73,6 +73,7 @@ def game_intro():
 
     while intro:
         for event in pygame.event.get():
+            print(event)
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
@@ -83,8 +84,18 @@ def game_intro():
         TextRect.center = ((display_width/2), (display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
 
-        pygame.draw.rect(gameDisplay, green, (150, 450, 100, 50 ))
-        pygame.draw.rect(gameDisplay, red, (550, 450, 100, 50))
+        mouse = pygame.mouse.get_pos()
+
+        if 150 + 100 > mouse[0] > 150 and 450+50 > mouse[1] > 450:
+            pygame.draw.rect(gameDisplay, bright_green, (150, 450, 100, 50))
+        else:
+            pygame.draw.rect(gameDisplay, green, (150, 450, 100, 50 ))
+
+        if 500 + 100 > mouse[0] > 550 and 450 +50 > mouse[1] > 450:
+            pygame.draw.rect(gameDisplay, bright_red, (550, 450, 100, 50))
+        else:
+            pygame.draw.rect(gameDisplay, red, (550, 450, 100, 50))
+
 
         pygame.display.update()
         clock.tick(15)
