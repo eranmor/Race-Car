@@ -66,11 +66,21 @@ def message_display(text):
 def crash():
     message_display('You Crashed')
 
-def button(msg,x,y,w,h,ic,ac):
+# Defines button
+def button(msg,x,y,w,h,ic,ac,action=None):
     mouse = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed(
 
+    )
+    print(click)
     if x + w > mouse[0] > x and y + h > mouse[1] > y:
         pygame.draw.rect(gameDisplay, ac, (x, y, w, h))
+        if click[0] == 1 and action != None:
+            if action == "play":
+                game_loop()
+            elif action == "quit":
+                pygame.quit()
+                quit()
     else:
         pygame.draw.rect(gameDisplay, ic, (x, y, w, h))
 
@@ -99,10 +109,11 @@ def game_intro():
 
 #        mouse = pygame.mouse.get_pos()
 
-        button('GO!', 150, 450, 100, 50, green, bright_green)
+        button('GO!', 150, 450, 100, 50, green, bright_green, "play")
 
-        button('Quit', 550, 450, 100, 50, red, bright_red)
+        button('Quit', 550, 450, 100, 50, red, bright_red, "quit")
 
+# manual buttons settings
         '''
         if 150 + 100 > mouse[0] > 150 and 450+50 > mouse[1] > 450:
             pygame.draw.rect(gameDisplay, bright_green, (150, 450, 100, 50))
