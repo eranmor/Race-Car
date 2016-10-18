@@ -94,6 +94,11 @@ def button(msg,x,y,w,h,ic,ac,action=None):
 def game_intro():
     intro = True
 
+# Game music
+    pygame.mixer.music.load('music.mp3')
+    pygame.mixer.music.play(loops=-1, start=0.0)
+    pygame.mixer.music.set_volume(0.1)
+
     while intro:
         for event in pygame.event.get():
             print(event)
@@ -219,6 +224,8 @@ def game_loop():
         clock.tick(60)
 
 game_intro()
+
 game_loop()
+
 pygame.quit
 quit()
