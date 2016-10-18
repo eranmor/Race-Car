@@ -180,6 +180,8 @@ def game_loop():
                 if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                     x_change = 0
 
+            if dodged == 20:
+                message_display("You Won")
 
         x += x_change
 
