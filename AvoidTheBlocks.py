@@ -1,6 +1,7 @@
 import pygame
 import time
 import random
+import speech
 
 
 pygame.init()

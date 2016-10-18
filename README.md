@@ -13,3 +13,9 @@
 - Add a start menu / screen - Done
 - Enable mouse control
 - Set "you win" when reaching 20 dodged objects - Done
+
+# Updates
+
+
+- 10/18/2016 Added Music and it worked :)
+- 10/18/2016 Adding Narration with 'speech'
