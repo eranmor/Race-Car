@@ -18,4 +18,4 @@
 
 
 - 10/18/2016 Added Music and it worked :)
-- 10/18/2016 Adding Narration with 'speech'
+- 10/18/2016 Adding Narration with 'speech' library - super cool
